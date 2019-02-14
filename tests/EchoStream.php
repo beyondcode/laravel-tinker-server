@@ -1,6 +1,10 @@
 <?php
 
-class EchoStream implements \React\Stream\WritableStreamInterface
+namespace BeyondCode\LaravelTinkerServer\Tests;
+
+use React\Stream\WritableStreamInterface;
+
+class EchoStream implements WritableStreamInterface
 {
     public function on($event, callable $listener)
     {

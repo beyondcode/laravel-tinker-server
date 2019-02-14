@@ -2,6 +2,7 @@
 
 use Psy\Configuration;
 use BeyondCode\LaravelTinkerServer\Server;
+use BeyondCode\LaravelTinkerServer\Tests\EchoStream;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 $componentRoot = $_SERVER['COMPONENT_ROOT'] ?? __DIR__.'/../..';
@@ -9,7 +10,6 @@ $componentRoot = $_SERVER['COMPONENT_ROOT'] ?? __DIR__.'/../..';
 $file = $componentRoot.'/vendor/autoload.php';
 
 require $file;
-require $_SERVER['COMPONENT_ROOT'].'/tests/fixtures/EchoStream.php';
 
 $loop = \React\EventLoop\Factory::create();
 
@@ -19,7 +19,7 @@ $config = new Configuration([
     'updateCheck' => 'never',
 ]);
 
-$stdio = new \Clue\React\Stdio\Stdio($loop, null, new \EchoStream());
+$stdio = new \Clue\React\Stdio\Stdio($loop, null, new EchoStream());
 
 $shell = new \Psy\Shell($config);
 
