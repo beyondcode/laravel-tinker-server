@@ -15,7 +15,7 @@ class Connection
 
     public function write(array $namedParameters): bool
     {
-        if (!$this->socket = $this->socket ?: $this->createSocket()) {
+        if (! $this->socket = $this->socket ?: $this->createSocket()) {
             return false;
         }
 

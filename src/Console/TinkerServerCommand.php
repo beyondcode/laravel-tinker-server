@@ -34,7 +34,7 @@ class TinkerServerCommand extends Command
     protected function createPsyShell()
     {
         $config = new Configuration([
-            'updateCheck' => 'never'
+            'updateCheck' => 'never',
         ]);
 
         $config->getPresenter()->addCasters(
@@ -61,6 +61,7 @@ class TinkerServerCommand extends Command
         if (class_exists('Illuminate\Foundation\Application')) {
             $casters['Illuminate\Foundation\Application'] = 'Laravel\Tinker\TinkerCaster::castApplication';
         }
+
         return $casters;
     }
 }

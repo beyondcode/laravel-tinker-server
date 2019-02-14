@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('tinker')) {
+if (! function_exists('tinker')) {
     function tinker(...$args)
     {
         /*
@@ -24,7 +24,7 @@ if (!function_exists('tinker')) {
             })->map(function ($carry, $index) {
                 return strpos($carry, '$') === 0
                     ? str_after($carry, '$')
-                    : 'temp' . $index;
+                    : 'temp'.$index;
                 // ["post", "temp1"]
             })
             ->combine($args)->all();
@@ -37,7 +37,7 @@ if (!function_exists('tinker')) {
     }
 }
 
-if (!function_exists('td')) {
+if (! function_exists('td')) {
     function td(...$args)
     {
         tinker($args);

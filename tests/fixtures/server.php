@@ -13,7 +13,7 @@ require $file;
 $output = new ConsoleOutput();
 
 $config = new Configuration([
-    'updateCheck' => 'never'
+    'updateCheck' => 'never',
 ]);
 
 $shell = new \Psy\Shell($config);

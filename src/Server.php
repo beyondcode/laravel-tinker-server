@@ -2,8 +2,8 @@
 
 namespace BeyondCode\LaravelTinkerServer;
 
-use Clue\React\Stdio\Stdio;
 use Psy\Shell;
+use Clue\React\Stdio\Stdio;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
 use React\Socket\ConnectionInterface;
@@ -69,7 +69,6 @@ class Server
 
                     $this->output->write($this->shellOutput->fetch());
                 });
-
             });
         });
     }
@@ -87,7 +86,7 @@ class Server
 
             $this->executeCode($line);
 
-            $this->output->write(PHP_EOL . $this->shellOutput->fetch());
+            $this->output->write(PHP_EOL.$this->shellOutput->fetch());
         });
     }
 
