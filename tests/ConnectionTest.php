@@ -24,7 +24,6 @@ class ConnectionTest extends TestCase
             $process->start(function ($type, $buffer) use ($process, &$dumped, $connection) {
                 if (Process::ERR === $type) {
                     $process->stop();
-                    dd($buffer);
                     $this->fail();
                 } elseif ("READY\n" === $buffer) {
                     usleep(5000);
