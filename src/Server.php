@@ -9,7 +9,6 @@ use React\EventLoop\LoopInterface;
 use React\Socket\ConnectionInterface;
 use React\Socket\Server as SocketServer;
 use Symfony\Component\Console\Output\BufferedOutput;
-use Symfony\Component\Console\Output\OutputInterface;
 use BeyondCode\LaravelTinkerServer\Shell\ExecutionClosure;
 
 class Server
