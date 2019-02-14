@@ -2,7 +2,6 @@
 
 class EchoStream implements \React\Stream\WritableStreamInterface
 {
-
     public function on($event, callable $listener)
     {
         // TODO: Implement on() method.
@@ -37,6 +36,7 @@ class EchoStream implements \React\Stream\WritableStreamInterface
     {
         return true;
     }
+
     public function write($data)
     {
         echo $data;
@@ -46,6 +46,7 @@ class EchoStream implements \React\Stream\WritableStreamInterface
     {
         // TODO: Implement end() method.
     }
+
     public function close()
     {
         // TODO: Implement close() method.
