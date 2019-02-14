@@ -40,10 +40,9 @@ class ConnectionTest extends TestCase
             //
         }
 
-        $this->assertSame('
->> $i
-=> 10
-', $dumped);
+        $this->assertSame("\r\e[K
+\r\e[K>> \$i
+=> 10\n", $dumped);
     }
 
     /** @test */

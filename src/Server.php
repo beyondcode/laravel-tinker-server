@@ -25,18 +25,20 @@ class Server
     /** @var Shell */
     protected $shell;
 
-    /** @var OutputInterface */
+    /** @var BufferedOutput */
     protected $output;
 
-    public function __construct($host, Shell $shell, OutputInterface $output, LoopInterface $loop = null)
-    {
-        $loop = $loop ?? Factory::create();
+    /** @var Stdio */
+    protected $stdio;
 
+    public function __construct($host, Shell $shell, BufferedOutput $output, LoopInterface $loop = null, Stdio $stdio = null)
+    {
         $this->host = $host;
-        $this->loop = $loop;
+        $this->loop = $loop ?? Factory::create();
         $this->shell = $shell;
         $this->output = $output;
         $this->shellOutput = new BufferedOutput();
+        $this->stdio = $stdio ?? $this->createStdio();
     }
 
     public function start()
@@ -44,8 +46,6 @@ class Server
         $this->shell->setOutput($this->shellOutput);
 
         $this->createSocketServer();
-
-        $this->createStdio();
 
         $this->loop->run();
     }
@@ -60,7 +60,7 @@ class Server
 
                 $this->shell->setScopeVariables(array_merge($unserializedData, $this->shell->getScopeVariables()));
 
-                $this->output->write(PHP_EOL);
+                $this->stdio->write(PHP_EOL);
 
                 collect($unserializedData)->keys()->map(function ($variableName) {
                     $this->output->writeln('>> $'.$variableName);
@@ -68,12 +68,14 @@ class Server
                     $this->executeCode('$'.$variableName);
 
                     $this->output->write($this->shellOutput->fetch());
+
+                    $this->stdio->write($this->output->fetch());
                 });
             });
         });
     }
 
-    protected function createStdio()
+    protected function createStdio(): Stdio
     {
         $stdio = new Stdio($this->loop);
 
@@ -87,7 +89,11 @@ class Server
             $this->executeCode($line);
 
             $this->output->write(PHP_EOL.$this->shellOutput->fetch());
+
+            $this->stdio->write($this->output->fetch());
         });
+
+        return $stdio;
     }
 
     protected function executeCode($code)

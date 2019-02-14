@@ -7,6 +7,7 @@ use Psy\Configuration;
 use Illuminate\Console\Command;
 use Laravel\Tinker\ClassAliasAutoloader;
 use BeyondCode\LaravelTinkerServer\Server;
+use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 
 class TinkerServerCommand extends Command
@@ -15,20 +16,24 @@ class TinkerServerCommand extends Command
 
     public function handle()
     {
-        $this->createWarningFormatter();
+        $output = $this->createWarningFormatter();
 
-        $server = new Server(config('laravel-tinker-server.host'), $this->createPsyShell(), $this->output);
+        $server = new Server(config('laravel-tinker-server.host'), $this->createPsyShell(), $output);
 
         $server->start();
     }
 
-    protected function createWarningFormatter()
+    protected function createWarningFormatter(): BufferedOutput
     {
-        if (! $this->output->getFormatter()->hasStyle('warning')) {
+        $output = new BufferedOutput();
+
+        if (! $output->getFormatter()->hasStyle('warning')) {
             $style = new OutputFormatterStyle('yellow');
 
-            $this->output->getFormatter()->setStyle('warning', $style);
+            $output->getFormatter()->setStyle('warning', $style);
         }
+
+        return $output;
     }
 
     protected function createPsyShell()

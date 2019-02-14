@@ -5,6 +5,7 @@ namespace BeyondCode\LaravelTinkerServer\Shell;
 use Psy\Shell;
 use Psy\Exception\BreakException;
 use Psy\Exception\ErrorException;
+use Psy\CodeCleaner\NoReturnValue;
 use Psy\Exception\ThrowUpException;
 use Psy\Exception\TypeErrorException;
 use Psy\ExecutionClosure as BaseExecutionClosure;
@@ -18,6 +19,8 @@ class ExecutionClosure extends BaseExecutionClosure
                 try {
                     // Restore execution scope variables
                     \extract($__psysh__->getScopeVariables(false), EXTR_SKIP);
+
+                    $_ = new NoReturnValue();
 
                     $__psysh__->addCode($__line__);
 
