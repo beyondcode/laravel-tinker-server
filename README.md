@@ -44,7 +44,7 @@ php artisan tinker-server
 And then you can put `tinker` calls in your methods to dump variable content as well as instantly making them available in an interactive REPL shell.
 
 ```php
-$user = App\User::find(1();
+$user = App\User::find(1);
 
 tinker($user);
 ```
