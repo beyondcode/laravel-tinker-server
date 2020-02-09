@@ -1,8 +1,8 @@
 <?php
 
-use Psy\Configuration;
 use BeyondCode\LaravelTinkerServer\Server;
 use BeyondCode\LaravelTinkerServer\Tests\EchoStream;
+use Psy\Configuration;
 use Symfony\Component\Console\Output\BufferedOutput;
 
 $componentRoot = $_SERVER['COMPONENT_ROOT'] ?? __DIR__.'/../..';

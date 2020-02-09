@@ -2,11 +2,11 @@
 
 namespace BeyondCode\LaravelTinkerServer\Tests;
 
-use PHPUnit\Framework\TestCase;
-use Symfony\Component\Process\Process;
-use Symfony\Component\Process\PhpProcess;
 use BeyondCode\LaravelTinkerServer\Connection;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\Process\Exception\ProcessTimedOutException;
+use Symfony\Component\Process\PhpProcess;
+use Symfony\Component\Process\Process;
 
 class ConnectionTest extends TestCase
 {

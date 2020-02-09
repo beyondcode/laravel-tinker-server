@@ -2,13 +2,13 @@
 
 namespace BeyondCode\LaravelTinkerServer\Shell;
 
-use Psy\Shell;
+use Psy\CodeCleaner\NoReturnValue;
 use Psy\Exception\BreakException;
 use Psy\Exception\ErrorException;
-use Psy\CodeCleaner\NoReturnValue;
 use Psy\Exception\ThrowUpException;
 use Psy\Exception\TypeErrorException;
 use Psy\ExecutionClosure as BaseExecutionClosure;
+use Psy\Shell;
 
 class ExecutionClosure extends BaseExecutionClosure
 {
@@ -28,7 +28,7 @@ class ExecutionClosure extends BaseExecutionClosure
                     \set_error_handler([$__psysh__, 'handleError']);
 
                     // Evaluate the current code buffer
-                    $_ = eval($__psysh__->onExecute($__psysh__->flushCode() ?: ExecutionClosure::NOOP_INPUT));
+                    $_ = eval($__psysh__->onExecute($__psysh__->flushCode() ?: self::NOOP_INPUT));
                 } catch (\Throwable $_e) {
                     // Clean up on our way out.
                     \restore_error_handler();

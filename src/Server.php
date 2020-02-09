@@ -2,14 +2,14 @@
 
 namespace BeyondCode\LaravelTinkerServer;
 
-use Psy\Shell;
+use BeyondCode\LaravelTinkerServer\Shell\ExecutionClosure;
 use Clue\React\Stdio\Stdio;
+use Psy\Shell;
 use React\EventLoop\Factory;
 use React\EventLoop\LoopInterface;
 use React\Socket\ConnectionInterface;
 use React\Socket\Server as SocketServer;
 use Symfony\Component\Console\Output\BufferedOutput;
-use BeyondCode\LaravelTinkerServer\Shell\ExecutionClosure;
 
 class Server
 {
