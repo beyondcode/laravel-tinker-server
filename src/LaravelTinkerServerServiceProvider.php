@@ -2,8 +2,8 @@
 
 namespace BeyondCode\LaravelTinkerServer;
 
-use Illuminate\Support\ServiceProvider;
 use BeyondCode\LaravelTinkerServer\Console\TinkerServerCommand;
+use Illuminate\Support\ServiceProvider;
 
 class LaravelTinkerServerServiceProvider extends ServiceProvider
 {

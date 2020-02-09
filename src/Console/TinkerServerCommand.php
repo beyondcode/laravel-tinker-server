@@ -2,13 +2,13 @@
 
 namespace BeyondCode\LaravelTinkerServer\Console;
 
-use Psy\Shell;
-use Psy\Configuration;
+use BeyondCode\LaravelTinkerServer\Server;
 use Illuminate\Console\Command;
 use Laravel\Tinker\ClassAliasAutoloader;
-use BeyondCode\LaravelTinkerServer\Server;
-use Symfony\Component\Console\Output\BufferedOutput;
+use Psy\Configuration;
+use Psy\Shell;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
+use Symfony\Component\Console\Output\BufferedOutput;
 
 class TinkerServerCommand extends Command
 {
